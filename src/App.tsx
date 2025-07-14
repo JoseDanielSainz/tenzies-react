@@ -1,11 +1,23 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Die from './Die'
 import { nanoid } from 'nanoid'
 import Confetti from 'react-confetti'
 
 export default function App() {
-  const [dice, setDice] = useState(generateAllNewDice())
+  const [dice, setDice] = useState(() => generateAllNewDice())
   const [rollCount, setRollCount] = useState(0)
+  const buttonRef: any = useRef(null)
+  console.log(buttonRef)
+
+  const gameWon = dice.every(die => die.isHeld) &&
+    dice.every(die => die.value === dice[0].value)
+
+  useEffect(() => {
+    if (gameWon) {
+      buttonRef.current.focus()
+    }
+
+  }, [gameWon])
 
   function generateAllNewDice() {
     return new Array(10)
@@ -16,7 +28,6 @@ export default function App() {
         id: nanoid()
       }))
   }
-
 
   function rollDice() {
     setDice(oldDice => oldDice.map(die =>
@@ -39,12 +50,6 @@ export default function App() {
         die
     ))
   }
-
-  let gameWon = false
-
-  dice.every(die => die.value === dice[0].value) &&
-    dice.every(die => die.isHeld === true)
-    ? gameWon = true : null
 
   const diceElements = dice.map(dieObj => (
     <Die
@@ -69,9 +74,12 @@ export default function App() {
         ? <button onClick={rollDice} className='roll-btn'>Roll</button>
         :
         <div>
-          <button onClick={newGame} className="new-game-btn">New Game</button>
+          <button ref={buttonRef} onClick={newGame} className="new-game-btn">New Game</button>
           <div className="win-text">You completed the game in {rollCount} rolls!</div>
           <Confetti />
+          <div aria-live="polite">
+            <p>Congratulations, you won! Press new game to start.</p>
+          </div>
         </div>
       }
 
