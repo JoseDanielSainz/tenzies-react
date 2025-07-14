@@ -115,17 +115,13 @@ p {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
   margin-bottom: 1rem;
   color: #1a1a1a;
-  font-weight: 700;
-  font-size: 1.75rem;
   cursor: pointer;
-}
 
-.held-die {
-  background-color: #59e391;
-}
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  padding: 4px;
 
-.die:hover {
-  background-color: #f1f1f1;
 }
 
 .dice-container {
@@ -139,4 +135,77 @@ p {
   margin-top: 10px;
   font-weight: 600;
   transition: opacity 0.5s;
+}
+
+/* Pips */
+
+.pip {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background-color: #181818;
+  box-shadow: 1px 1px 2px rgba(236, 236, 236, 0.8) inset;
+}
+
+#slot-one {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: center;
+  align-self: center;
+}
+
+#slot-two {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: center;
+  align-self: center;
+}
+
+#slot-three {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: center;
+  align-self: center;
+}
+
+#slot-four {
+  grid-column: 1;
+  grid-row: 2;
+  justify-self: center;
+  align-self: center;
+}
+
+#slot-five {
+  grid-column: 2;
+  grid-row: 2;
+  justify-self: center;
+  align-self: center;
+}
+
+#slot-six {
+  grid-column: 3;
+  grid-row: 2;
+  justify-self: center;
+  align-self: center;
+}
+
+#slot-seven {
+  grid-column: 1;
+  grid-row: 3;
+  justify-self: center;
+  align-self: center;
+}
+
+#slot-eight {
+  grid-column: 2;
+  grid-row: 3;
+  justify-self: center;
+  align-self: center;
+}
+
+#slot-nine {
+  grid-column-start: 3;
+  grid-row-start: 3;
+  justify-self: center;
+  align-self: center;
 }
