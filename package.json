@@ -10,8 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "confetti": "^2.0.6",
+    "from": "^0.1.7",
     "nanoid": "^5.1.5",
     "react": "^19.1.0",
+    "react-confetti": "^6.4.0",
     "react-dom": "^19.1.0"
   },
   "devDependencies": {

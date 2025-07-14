@@ -1,12 +1,7 @@
 import { useState } from 'react'
 import Die from './Die'
 import { nanoid } from 'nanoid'
-
-interface DieType {
-  value: number,
-  isHeld: boolean,
-  id: string
-}
+import Confetti from 'react-confetti'
 
 export default function App() {
   const [dice, setDice] = useState(generateAllNewDice())
@@ -76,6 +71,7 @@ export default function App() {
         <div>
           <button onClick={newGame} className="new-game-btn">New Game</button>
           <div className="win-text">You completed the game in {rollCount} rolls!</div>
+          <Confetti />
         </div>
       }
 
